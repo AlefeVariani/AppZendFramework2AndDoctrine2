@@ -1,41 +1,71 @@
-ZendSkeletonApplication
+AppZendFramework2AndDoctrine2
 =======================
 
-Introduction
-------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
-
-Installation
+Introdução
 ------------
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+A ideia é mostrar como funciona o Zend Framework 2(e melhorar meu conhecimento sobre a ferramenta), um dos framework mais usados e reconhecidos atualmente, junto com o Doctrine 2 (para facilitar ainda mais ) que nada mais é "o cara que fica responsavel pela camada de abstração com o Banco de Dados"
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+O que será feito:
+- Simples CRUD
+- Filtros
+- Paginação
+- Rotas
+- Partials
+- Novo Modulo
+- Autenticação
+- Email
+- Pdf, Json, Plugins . . .
+(não necessariamente nesta ordem) 
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+Instalação
+-----------
 
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
+### Usando o Composer 
+
+O Composer é um gerenciador de dependencias.
+Para rodar a Aplicação basta fazer um Clone da App do GitHub, depois atualizar seu "composer.phar"
+
+    git clone https://github.com/AlefeVariani/AppZendFramework2AndDoctrine2.git
     cd AppZendFramework2AndDoctrine2
     php composer.phar self-update
     php composer.phar install
 
-Web Server Setup
-----------------
+Rodando a Aplicação
+--------------------
 
-### PHP CLI Server
+### Servidor do PHP 
 
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
+Como muitos já sabem o PHP possue seu próprio Servidor \o/, apartir da versão 5.4 do PHP
+E para utilizar é muito fácil
 
-    php -S localhost:8080 -t public/ public/index.php
+    
+    cd AppZendFramework2AndDoctrine2/public
+    php -S localhost:8080 
 
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
+Existem outras formas, como configurando um Hosts para sua Aplicação, que também é Facil, no Site Oficial do Zf2 ele mostra como configurar.
+http://framework.zend.com/manual/2.3/en/user-guide/skeleton-application.html
+
+Usando o Doctrine 2
+--------------------
+
+Criação das nossas Tabelas(Classes) no Banco é umas das coisas, que podemos utilizar do Doctrine, Depois de Configurar com o seu Banco(no meu caso estou usando Postgresql)
+
+Comando para mostrar todas as ações do doctrine-module:
+
+    cd AppZendFramework2AndDoctrine2
+    ./vendor/bin/doctrine-module
+
+Para criação da Tabelas(Classes) no Banco:
+
+    ./vendor/bin/doctrine-module orm:schema-tool:create 
+
+Para excluir suas Tabelas(Classes) do Banco:
+
+    ./vendor/bin/doctrine-module orm:schema-tool:drop
+
+Para criação do sql de suas Tabelas(Classes) do Banco:
+
+    ./vendor/bin/doctrine-module orm:schema-tool:create --dump-sql
+
 
