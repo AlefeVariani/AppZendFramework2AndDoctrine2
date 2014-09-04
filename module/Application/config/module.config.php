@@ -36,7 +36,12 @@ return array(
                             'defaults' => array(
                                 ),
                             ),
-                        ),
+                            'child_routes' => array(//permite mandar dados pela url
+                                'wildcard' => array(
+                                    'type' => 'Wildcard'
+                                    ),
+                                ),
+                            ),
                     ),
                 ),
 ),

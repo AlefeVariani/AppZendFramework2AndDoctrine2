@@ -7,13 +7,20 @@ use Zend\View\Model\ViewModel;
 use Application\Form\Bandas as FormBanda;
 use Application\Model\Bandas as ModelBanda;
 
+/**
+* Controller responsavel pelo CRUD bandas  
+* @author Alefe Variani <alefevarinani18@gmail.com>
+*/
+
 class BandasController extends AbstractActionController
 {
+	# Função responsavel instanciação do objeto Doctrine ORM
 	private function getObjectManager()
 	{
 		return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 	}
 
+	# Função responsavel pela visualização das bandas
 	public function indexAction() 
 	{
 		$title = 'Lista de Bandas';
@@ -35,6 +42,7 @@ class BandasController extends AbstractActionController
 			));
 	}
 
+	# Função responsavel pela inserção da nova banda
 	public function saveAction()
 	{
 		$titleSave = 'Cadastro de Bandas:';
@@ -68,24 +76,24 @@ class BandasController extends AbstractActionController
 			));
 	}
 
+	# Função responsavel pela edição da banda
 	public function updateAction()
 	{
 
 	}
 
+	# Função responsavel pela exclusão da banda
 	public function deleteAction()
 	{
 		$id = (int) $this->params()->fromRoute('id', 0);
-
-		if ($id > 0)
-			$banda = $this->getObjectManager()->find('Application\Model\Bandas', $id);
-			$this->getObjectManager()->remove($banda);
-			try {
-				$this->getObjectManager()->flush();
-				$this->flashMessenger()->addSuccessMessage('Banda excluida com Sucesso!!!');
-			} catch (\Exception $e) {
-				$this->flashMessenger()->addErrorMessage('Ocorreu um erro, banda não foi excluida!');
-			}
+		$banda = $this->getObjectManager()->find('Application\Model\Bandas', $id);
+		$this->getObjectManager()->remove($banda);
+		try {
+			$this->getObjectManager()->flush();
+			$this->flashMessenger()->addSuccessMessage('Banda excluida com Sucesso!!!');
+		} catch (\Exception $e) {
+			$this->flashMessenger()->addErrorMessage('Ocorreu um erro, banda não foi excluida!');
+		}
 		return $this->redirect()->toUrl('/application/bandas');
 	}
 }
