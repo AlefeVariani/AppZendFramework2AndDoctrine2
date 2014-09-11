@@ -1,4 +1,7 @@
 <?php
+// Informação de erros
+// error_reporting(E_ALL);
+// ini_set('display_errors', true);
 
 chdir(dirname(__DIR__));
 
