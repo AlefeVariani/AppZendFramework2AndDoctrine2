@@ -2,7 +2,7 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use ZealPro\Controller\AbstractController;
 use Zend\View\Model\ViewModel;
 use Application\Form\Bandas as FormBanda;
 use Application\Model\Bandas as ModelBanda;
@@ -12,13 +12,8 @@ use Application\Model\Bandas as ModelBanda;
 * @author Alefe Variani <alefevarinani18@gmail.com>
 */
 
-class BandasController extends AbstractActionController
+class BandasController extends AbstractController
 {
-	# Função responsavel instanciação do objeto Doctrine ORM
-	private function getObjectManager()
-	{
-		return $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-	}
 
 	# Função responsavel pela visualização das bandas
 	public function indexAction() 
