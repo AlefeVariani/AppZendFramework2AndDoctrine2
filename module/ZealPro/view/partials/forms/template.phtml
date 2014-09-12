@@ -1,0 +1,150 @@
+<link href='http://fonts.googleapis.com/css?family=New+Rocker' rel='stylesheet' type='text/css'>
+<h1 style="font-family: 'New Rocker';font" ><?php echo $this->title; ?> </h1>
+<br>
+<fieldset>
+    <?php
+    foreach ($this->dados->getElements() as $element):
+
+        $attributes = $this->dados->get($element->getName())->getAttributes();
+        
+        switch ($attributes['type']) :
+            case 'hidden':
+                $name_hidden = $attributes['name'];
+                $hidden = $this->dados->get($attributes['name']);
+                (isset($hidden->getOptions()['class'])) ? $class = $hidden->getOptions()['class'] : $class = '';
+                $hidden->setAttributes(array(
+                    'name' => $element->getName(),
+                    'id' => $element->getName(),
+                    'class' => $class,
+                    ));
+                $this->dados->add($hidden);
+
+                $hidden->setAttributes(array(
+                    'name' => $element->getName(),
+                    'id' => $element->getName(),
+                    ));
+                $this->dados->add($hidden);
+                echo $this->formInput($this->dados->get($name_hidden));
+                break;
+                ?>    
+                <br />
+                <?php
+            case 'text':
+                ?>
+                <div class="form-group" id="id<?php echo $element->getName();?>">
+                     <label style="font-family: 'New Rocker';" class="col-sm-2 control-label">
+                        <?php echo $this->formLabel($this->dados->get($element->getName())); ?>
+                     </label>
+                     <div class="col-sm-4">
+                        <?php
+                        $text = $this->dados->get($element->getName());
+                        $text->setAttributes(array(
+                            'name' => $element->getName(),
+                            'id' => $element->getName(),
+                            'class' => 'form-control',
+                            'style' => 'font-family: New Rocker'
+                            ));
+                        $this->dados->add($text);                         
+                        echo $this->formInput($this->dados->get($element->getName()));                
+                        ?>
+                     </div>   
+                </div>
+                <br />
+                <?php
+                break;
+            case 'textarea':
+                ?>
+                <div class="form-group">
+                    <label style="font-family: 'New Rocker';" class="col-sm-2 control-label">
+                        <?php echo $this->formLabel($this->dados->get($element->getName())); ?>
+                    </label>
+                    <div class="col-sm-4">
+                        <?php
+                        $textarea = $this->dados->get($element->getName());
+                        $textarea->setAttributes(array(
+                            'name' => $element->getName(),
+                            'id' => $element->getName(),
+                            'class' => 'form-control',
+                            'style' => 'font-family: New Rocker'
+                            ));
+                        $this->dados->add($textarea);                         
+                        echo $this->formTextarea($this->dados->get($element->getName()));
+                        ?>
+                    </div>
+                </div>
+                <br />
+                <?php
+                break;            
+            case 'select':
+                ?>
+                <br />
+                <div class="form-group">
+                    <label style="font-family: 'New Rocker';" class="col-sm-2 control-label>">
+                        <?php echo $this->formLabel($this->dados->get($element->getName())); ?>
+                    </label>
+                    <div class="col-sm-4">
+                        <?php
+                        $select = $this->dados->get($element->getName());
+
+                        $select->setAttributes(array(
+                            'name' => $element->getName(),
+                            'class' => 'form-control',
+                            'style' => 'font-family: New Rocker'
+                            ));
+                        $this->dados->add($select);
+                        echo '<td>' . $this->formSelect($this->dados->get($element->getName())) . '</td>';
+                        ?>
+                    </div>
+                </div>
+                <br />
+                <?php
+                break;
+            case 'radio':
+                $radio = $this->dados->get($element->getName());
+                $radio->setOptions(array(
+                    'value_options' => array(
+                        0 => '',
+                        ),
+                    ));
+                $radio->setAttributes(array(
+                    'name' => 'radio',
+                    ));
+                $this->dados->add($radio);
+                ?>
+                <div class="">
+                    <div class="">
+                        <?php echo $this->formLabel($this->dados->get($element->getName())); ?>
+                    </div>
+                    <div class="">
+                        <?php
+                        echo $this->formInput($this->dados->get($element->getName()));
+                        ?>
+                    </div>
+                </div>
+                <br />
+                <?php
+                break;
+            case 'checkbox':
+                ?>
+                <div class="">
+                    <div class="">
+                        <?php echo $this->formLabel($this->dados->get($element->getName())); ?>
+                    </div>
+                    <div class="">
+                        <?php
+                        echo $this->formInput($this->dados->get($element->getName()));
+                        ?>
+                    </div>
+                </div>
+                <br />
+                <?php
+                break;
+        endswitch;
+    endforeach;
+    ?>
+    <br />
+    <div style="font-family: 'New Rocker';" class="actions clearfix">
+        <input style="background:#000000; color:#FFFFFF;" type="submit" id="submitbutton" class="btn btn-lg">
+        <a  style="background:#999999; color:#FFFFFF" href="javascript:window.history.go(-1)"> <input type="button" id="btnVoltar" class="btn btn-lg" name="btnVoltar" value="Voltar"></a>
+    </div>
+</fieldset>
