@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /** @ORM\Entity 
 *   @ORM\Table(name="bandas")
 */
-class Bandas {
+class Bandas 
+{
     /**
     * @ORM\Id
     * @ORM\GeneratedValue(strategy="AUTO")
@@ -90,6 +91,14 @@ class Bandas {
 	{
 		return $this->num_integrantes_banda;
 	}
+
+    /**
+    * @return string
+    */
+    public function getDescBanda()
+    {
+        return $this->desc_banda;
+    }
 
     /**
 	* @return datetime

@@ -5,7 +5,9 @@ namespace Application\Form;
 use Zend\Form\Form;
 use Zend\Form\Element;
 
-class Bandas extends Form {
+class Bandas extends Form 
+{
+
 	public function __construct()
 	{
 		parent::__construct('bandas');
@@ -15,28 +17,29 @@ class Bandas extends Form {
 
 		$this->add(array(
 			'name' => 'id',
-			'type' => 'Hidden',
-			));
+			'type' => 'hidden',
+			)
+		);
 
 		$this->add(array(
 			'name' => 'nome_banda',
-			'type' => 'Text',
+			'type' => 'text',
 			'options' => array(
 				'label' => 'Nome da Banda: '
-				),
-			));
+			),
+		));
 
 		$this->add(array(
 			'name' => 'desc_banda',
 			'type' => 'textarea',
 			'options' => array(
 				'label' => 'Descrição da Banda: '
-				),
-			));
+			),
+		));
 
 		$this->add(array(
 			'name' => 'num_integrantes_banda',
-			'type' => 'Select',
+			'type' => 'select',
 			'options' => array(
 				'label' => 'Número de Integrantes da Banda: ',
 				'empty_option' => 'Quantos são? ',
@@ -51,24 +54,8 @@ class Bandas extends Form {
 					'8' => '8',
 					'9' => '9',
 					'10' => '10',
-					),
 				),
-			));
-
-		$this->add(array(
-			'name' => 'submit',
-			'type' => 'submit',
-			'attributes' => array(
-				'id' => 'submitbutton'
-				),
-			));
-
-		$this->add(array(
-			'name' => 'cancel',
-			'type' => 'submit',
-			'attributes' => array(
-				'onclick' => "location.href='/application/bandas'"
-				),
-			));
+			),
+		));
 	}
 }

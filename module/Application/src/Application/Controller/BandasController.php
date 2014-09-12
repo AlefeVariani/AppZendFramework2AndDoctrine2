@@ -14,7 +14,6 @@ use Application\Model\Bandas as ModelBanda;
 
 class BandasController extends AbstractController
 {
-
 	# Função responsavel pela visualização das bandas
 	public function indexAction() 
 	{
@@ -51,11 +50,18 @@ class BandasController extends AbstractController
 			$formBanda->setData($values);
 
 			if ($formBanda->isValid()) {
-				$modelBanda = new ModelBanda();
+
+				// Verifica se id já existe
+				if ($values['id']) {
+					$modelBanda = $this->getObjectManager()->find('\Application\Model\Bandas', $values['id']);
+				} else {
+					$modelBanda = new ModelBanda();
+					$modelBanda->setDataCadastro($data_atual);
+				}
+
 				$modelBanda->setNomeBanda($values['nome_banda']);
 				$modelBanda->setDescBanda($values['desc_banda']);
 				$modelBanda->setNumIntegrantesBanda($values['num_integrantes_banda']);
-				$modelBanda->setDataCadastro($data_atual);
 				$this->getObjectManager()->persist($modelBanda);
 			}
 			try {
@@ -65,16 +71,23 @@ class BandasController extends AbstractController
 				return $this->redirect()->toUrl('/application/bandas');
 			}
 		}
+
+		$id = (int) $this->params()->fromRoute('id',0);
+
+		// Editar
+		if ($id > 0) {
+			$banda = $this->getObjectManager()->find('\Application\Model\Bandas', $id);
+
+			$formBanda->get('id')->setValue($banda->getId());
+			$formBanda->get('nome_banda')->setValue($banda->getNomeBanda());
+			$formBanda->get('desc_banda')->setValue($banda->getDescBanda());
+			$formBanda->get('num_integrantes_banda')->setValue($banda->getNumIntegrantesBanda());
+		}
+
 		return new ViewModel(array(
 			'form' => $formBanda,
 			'title' => $titleSave
-			));
-	}
-
-	# Função responsavel pela edição da banda
-	public function updateAction()
-	{
-
+		));
 	}
 
 	# Função responsavel pela exclusão da banda
