@@ -68,4 +68,34 @@ Para criação do sql de suas Tabelas(Classes) do Banco:
 
     ./vendor/bin/doctrine-module orm:schema-tool:create --dump-sql
 
+Usando o ZFTool
+---------------
+
+Ferramenta de linha de comando para o ZF2, configurável atravez do composer - "zendframework/zftool": "dev-master" 
+Permite criar um novo projeto, um novo modulo, um novo controller e outros comandos uteis.
+
+Para listar comandos:
+
+    ./vendor/bin/zf.php
+
+Para criar um novo projeto ZF2(Skeleton):
+
+    ./vendor/bin/zf.php create project Zf2Teste
+
+Para criar um novo controller ZF2(Skeleton):
+
+    ./vendor/bin/zf.php create controller Teste Application 
+
+Para criar uma action no controller:
+
+    ./vendor/bin/zf.php create action Teste Teste Application
+    
+    
+
+
+
+        
+
+
+
 
