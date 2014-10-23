@@ -8,23 +8,22 @@ use Application\Form\Bandas as FormBanda;
 use Application\Model\Bandas as ModelBanda;
 
 /**
-* Controller responsavel pelo CRUD bandas  
+* Controller responsavel pelo CRUD bandas
 * @author Alefe Variani <alefevarinani18@gmail.com>
 */
-
 class BandasController extends AbstractController
 {
 	# Função responsavel pela visualização das bandas
-	public function indexAction() 
+	public function indexAction()
 	{
 		$title = 'Lista de Bandas';
 		$titleButton = 'Cadastrar';
 		$query = $this->getObjectManager()
 					  ->createQuery("SELECT b.id,
-					  						b.nome_banda, 
-					  						b.desc_banda, 
-					  						b.data_cadastro, 
-					  						CONCAT('Número de ',b.num_integrantes_banda, ' integrantes') AS num_inte_banda 
+					  						b.nome_banda,
+					  						b.desc_banda,
+					  						b.data_cadastro,
+					  						CONCAT('Número de ',b.num_integrantes_banda, ' integrantes') AS num_inte_banda
 									 FROM Application\Model\Bandas b ORDER BY b.nome_banda ASC"
 									);
 		$bandasResult = $query->getArrayResult();
@@ -45,7 +44,7 @@ class BandasController extends AbstractController
 
 		if ($request->isPost()) {
 			$values = $request->getPost();
-			
+
 			$data_atual = new \DateTime();
 			$formBanda->setData($values);
 

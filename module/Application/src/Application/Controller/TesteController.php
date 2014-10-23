@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 
 class TesteController extends AbstractActionController
 {
-
     public function indexAction()
     {
         return new ViewModel();
@@ -17,6 +16,4 @@ class TesteController extends AbstractActionController
     {
         return new ViewModel();
     }
-
 }
-
