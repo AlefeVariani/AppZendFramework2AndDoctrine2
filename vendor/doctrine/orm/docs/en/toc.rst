@@ -8,12 +8,15 @@ Tutorials
    :maxdepth: 1
 
    tutorials/getting-started
+   tutorials/getting-started-database
+   tutorials/getting-started-models
    tutorials/working-with-indexed-associations
    tutorials/extra-lazy-associations
    tutorials/composite-primary-keys
    tutorials/ordered-associations
-   tutorials/in-ten-quick-steps
    tutorials/override-field-association-mappings-in-subclasses
+   tutorials/pagination.rst
+   tutorials/embeddables.rst
 
 Reference Guide
 ---------------
@@ -22,9 +25,8 @@ Reference Guide
    :maxdepth: 1
    :numbered:
 
-   reference/introduction
    reference/architecture
-   reference/configuration
+   reference/configuration.rst
    reference/faq
    reference/basic-mapping
    reference/association-mapping
@@ -51,10 +53,13 @@ Reference Guide
    reference/metadata-drivers
    reference/best-practices
    reference/limitations-and-known-issues
-   tutorials/pagination.rst
-   reference/filters.rst
-   reference/namingstrategy.rst
-
+   tutorials/pagination
+   reference/filters
+   reference/namingstrategy
+   reference/advanced-configuration
+   reference/second-level-cache
+   reference/security
+   
 
 Cookbook
 --------
@@ -63,6 +68,7 @@ Cookbook
    :maxdepth: 1
 
    cookbook/aggregate-fields
+   cookbook/custom-mapping-types
    cookbook/decorator-pattern
    cookbook/dql-custom-walkers
    cookbook/dql-user-defined-functions
@@ -70,6 +76,7 @@ Cookbook
    cookbook/implementing-the-notify-changetracking-policy
    cookbook/implementing-wakeup-or-clone
    cookbook/integrating-with-codeigniter
+   cookbook/resolve-target-entity-listener
    cookbook/sql-table-prefixes
    cookbook/strategy-cookbook-introduction
    cookbook/validation-of-entities
