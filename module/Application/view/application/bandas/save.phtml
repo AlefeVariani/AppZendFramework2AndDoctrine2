@@ -1,4 +1,4 @@
 <?php
 echo $this->form()->openTag($form);
-echo $this->partial('/partials/forms/template.phtml', array('dados' => $form, 'title' => $title));
+echo $this->partial('/partials/forms/template.phtml', ['dados' => $form, 'title' => $title]);
 echo $this->form()->closeTag();

@@ -1,41 +1,41 @@
 <div style="font-family: 'New Rocker'" class="actions clearfix">
-	<a style="background:#333333; color:#FFFFFF;" href="/application/bandas/save" title="Cadastra nova banda" type="button" class="btn btn-lg">
-		<?php echo $titleButton;?>
-	</a>
+    <a style="background:#333333; color:#FFFFFF;" href="/application/bandas/save" title="Cadastra nova banda" type="button" class="btn btn-lg">
+        <?php echo $titleButton; ?>
+    </a>
 </div>
 <div>
-	<label class="divisor"><h2 style="font-family: 'New Rocker';"><?php echo $title;?></h2></label>
+    <label class="divisor"><h2 style="font-family: 'New Rocker';"><?php echo $title; ?></h2></label>
 </div>
 <div>
-	<table style="font-family: 'New Rocker';" class="table table-hover">
-		<thead>
-			<tr>
-				<th>Nome da Banda</th>
-				<th>Descrição da Banda</th>
-				<th>Integrantes da Banda</th>
-				<th>Data do Cadastro</th>
-				<th>Opções</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach ($bandas as $banda): ?>
-				<tr>
-					<td> <?php echo $this->escapeHtml($banda['nome_banda']); ?></td>
-					<td> <?php echo $this->escapeHtml($banda['desc_banda']); ?></td>
-					<td> <?php echo $this->escapeHtml($banda['num_inte_banda']); ?></td>
-					<td> <?php echo $this->escapeHtml($banda['data_cadastro']->format('d/m/Y'));?></td>
-					<td class="center" >
-						<a href="<?php echo $this->url('application').'/bandas/save/id/'.$banda['id']?>"
-							title="Editar" type="button" class="btn">
-							<span style="color:#000000;" class="glyphicon glyphicon-pencil"></span>
-						</a>
-						<a href="<?php echo $this->url('application').'/bandas/delete/id/'.$banda['id']?>"
-							title="Excluir" type="button" class="btn">
-							<span style="color:#000000;" class="glyphicon glyphicon-remove"></span>
-						</a>
-					</td>
-				</tr>
-			<?php endforeach; ?>	
-		</tbody>
-	</table>
+    <table style="font-family: 'New Rocker';" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome da Banda</th>
+                <th>Descrição da Banda</th>
+                <th>Integrantes da Banda</th>
+                <th>Data do Cadastro</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($bandas as $banda): ?>
+                <tr>
+                    <td> <?php echo $this->escapeHtml($banda['nome_banda']); ?></td>
+                    <td> <?php echo $this->escapeHtml($banda['desc_banda']); ?></td>
+                    <td> <?php echo $this->escapeHtml($banda['num_inte_banda']); ?></td>
+                    <td> <?php echo $this->escapeHtml($banda['data_cadastro']->format('d/m/Y')); ?></td>
+                    <td class="center" >
+                        <a href="<?php echo $this->url('application') . '/bandas/save/id/' . $banda['id'] ?>"
+                           title="Editar" type="button" class="btn">
+                            <span style="color:#000000;" class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="<?php echo $this->url('application') . '/bandas/delete/id/' . $banda['id'] ?>"
+                           title="Excluir" type="button" class="btn">
+                            <span style="color:#000000;" class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>	
+        </tbody>
+    </table>
 </div>

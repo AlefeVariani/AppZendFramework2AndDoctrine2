@@ -1,8 +1,9 @@
 <?php
-return array(
-	'view_manager' => array(
-		'template_path_stack' => array(
-			__DIR__ . '/../view',
-		),
-	),
-);
+
+return [
+    'view_manager' => [
+        'template_path_stack' => [
+            __DIR__ . '/../view'
+        ]
+    ]
+];

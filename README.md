@@ -44,12 +44,14 @@ E para utilizar é muito fácil
     php -S localhost:8080 
 
 Existem outras formas, como configurando um Hosts para sua Aplicação, que também é Facil, no Site Oficial do Zf2 ele mostra como configurar.
-http://framework.zend.com/manual/2.3/en/user-guide/skeleton-application.html
+http://framework.zend.com/manual/2.3/en/user-guide/skeleton-application.html. 
+
 
 Usando o Doctrine 2
 --------------------
 
 Criação das nossas Tabelas(Classes) no Banco é umas das coisas, que podemos utilizar do Doctrine, Depois de Configurar com o seu Banco(no meu caso estou usando Postgresql)
+No [tutorial do Marcos Pivetta](http://marco-pivetta.com/doctrine-orm-zf2-tutorial/#/) é mostrado como configurar o Doctrine 2 com o Zend Framework, no caso dele com o banco Mysql.
 
 Comando para mostrar todas as ações do doctrine-module:
 
@@ -89,13 +91,3 @@ Para criar um novo controller ZF2(Skeleton):
 Para criar uma action no controller:
 
     ./vendor/bin/zf.php create action Teste Teste Application
-    
-    
-
-
-
-        
-
-
-
-

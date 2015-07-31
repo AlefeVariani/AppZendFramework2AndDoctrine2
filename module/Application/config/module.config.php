@@ -1,109 +1,108 @@
 <?php
 
-return array(
-    'router' => array(
-        'routes' => array(
-            'home' => array(
+return [
+    'router' => [
+        'routes' => [
+            'home' => [
                 'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
+                'options' => [
+                    'route' => '/',
+                    'defaults' => [
                         'controller' => 'Application\Controller\Index',
-                        'action'     => 'index',
-                        ),
-                    ),
-                ),
-            'application' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/application',
-                    'defaults' => array(
+                        'action' => 'index'
+                    ]
+                ]
+            ],
+            'application' => [
+                'type' => 'Literal',
+                'options' => [
+                    'route' => '/application',
+                    'defaults' => [
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                        ),
-                    ),
+                        'controller' => 'Index',
+                        'action' => 'index'
+                    ]
+                ],
                 'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
+                'child_routes' => [
+                    'default' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/[:controller[/:action]]',
+                            'constraints' => [
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                ),
-                            'defaults' => array(
-                                ),
-                            ),
-                            'child_routes' => array(//permite mandar dados pela url
-                                'wildcard' => array(
-                                    'type' => 'Wildcard'
-                                    ),
-                                ),
-                            ),
-                    ),
-                ),
-),
-),
-'service_manager' => array(
-    'abstract_factories' => array(
-        'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-        'Zend\Log\LoggerAbstractServiceFactory',
-        ),
-    'aliases' => array(
-        'translator' => 'MvcTranslator',
-        ),
-    ),
-'translator' => array(
-    'locale' => 'en_US',
-    'translation_file_patterns' => array(
-        array(
-            'type'     => 'gettext',
-            'base_dir' => __DIR__ . '/../language',
-            'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
-'controllers' => array(
-    'invokables' => array(
-        'Application\Controller\Index' => 'Application\Controller\IndexController',
-        'Application\Controller\Bandas' => 'Application\Controller\BandasController',
-        ),
-    ),
-'view_manager' => array(
-    'display_not_found_reason' => true,
-    'display_exceptions'       => true,
-    'doctype'                  => 'HTML5',
-    'not_found_template'       => 'error/404',
-    'exception_template'       => 'error/index',
-    'template_map' => array(
-        'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-        'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-        'error/404'               => __DIR__ . '/../view/error/404.phtml',
-        'error/index'             => __DIR__ . '/../view/error/index.phtml',
-        ),
-    'template_path_stack' => array(
-        __DIR__ . '/../view',
-        ),
-    ),
-'console' => array(
-    'router' => array(
-        'routes' => array(
-            ),
-        ),
-    ),
-'doctrine' => array(
-  'driver' => array(
-    'application_entities' => array(
-      'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-      'cache' => 'array',
-      'paths' => array(__DIR__ . '/../src/Application/Model')
-      ),
-
-    'orm_default' => array(
-      'drivers' => array(
-        'Application\Model' => 'application_entities'
-        )
-      ))),
-);
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                            ],
+                            'defaults' => []
+                        ],
+                        'child_routes' => [//permite mandar dados pela url
+                            'wildcard' => [
+                                'type' => 'Wildcard'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ],
+    'service_manager' => [
+        'abstract_factories' => [
+            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
+            'Zend\Log\LoggerAbstractServiceFactory'
+        ],
+        'aliases' => [
+            'translator' => 'MvcTranslator'
+        ]
+    ],
+    'translator' => [
+        'locale' => 'en_US',
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.mo'
+            ]
+        ]
+    ],
+    'controllers' => [
+        'invokables' => [
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Bandas' => 'Application\Controller\BandasController'
+        ]
+    ],
+    'view_manager' => [
+        'display_not_found_reason' => true,
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
+        'template_map' => [
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml'
+        ],
+        'template_path_stack' => [
+            __DIR__ . '/../view'
+        ]
+    ],
+    'console' => [
+        'router' => [
+            'routes' => []
+        ]
+    ],
+    'doctrine' => [
+        'driver' => [
+            'application_entities' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Application/Model']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'Application\Model' => 'application_entities'
+                ]
+            ]
+        ]
+    ]
+];
